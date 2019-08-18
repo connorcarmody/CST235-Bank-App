@@ -21,11 +21,15 @@ public class Bank {
 	public List<Customer> customers = new ArrayList<>(); // Hold a list of ALL customers
 	public Integer key =1;
 	
+	/**
+	 * get index of customer array
+	 * @return
+	 */
 	public Integer getKey() {
 		return key;
 	}
 /**
- * 
+ * Set index of customer array based on login
  * @param key
  */
 	public void setKey(Integer key) {
@@ -33,14 +37,14 @@ public class Bank {
 	}
 
 	/**
-	 * 
+	 * Make Bank object with customer name for display purposes
 	 * @param name
 	 */
 	public Bank(String name) {
 		this.name = name;	
 	}
 	/**
-	 * 
+	 * Generic constructor for various uses
 	 */
 	public Bank() {
 		// TODO Auto-generated constructor stub
@@ -58,7 +62,7 @@ public class Bank {
 		processCustMenu(option);
 	}
 	/**
-	 * 
+	 * Login customer
 	 */
 	public void login() {
 		SQLQueries q = new SQLQueries();
@@ -94,7 +98,9 @@ public class Bank {
 		
 	}
 	
-	// Process the selected customer to use for banking transactions
+	/**
+	 * Process the selected customer to use for banking transactions
+	 */
 	public void pickCustomer() {
 	
 		
@@ -117,7 +123,10 @@ public class Bank {
 		}
 	}	
 	
-	// Process the bank transaction menu option
+	/**
+	 *  Process the bank transaction menu option
+	 * @param parseInt
+	 */
 	private void processCustomerMenu(int parseInt) {
 
 		switch(parseInt) {
@@ -149,38 +158,52 @@ public class Bank {
 		}
 	}
 
-	// Execute each end of month methods in each class
+	/**
+	 *  Execute each end of month methods in each class
+	 */
 	private void viewEndOfMonth() {
 		customers.get(currentCustomer).getSaving().doEndOfMonth();
 		customers.get(currentCustomer).getChecking().doEndOfMonth();
 		customers.get(currentCustomer).getLoan().doEndOfMonth();		
 	}
 
-	// display and process loan payment
+	/**
+	 *  display and process loan payment
+	 */
 	private void viewLoanPayment() {
 		customers.get(currentCustomer).getLoan().doCredit(Menus.userDblInput("How much to pay on your loan?"));
 	}
 	
-	// display and process savings withdraw
+	/**
+	 *  display and process savings withdraw
+	 */
 	private void viewWithdrawalSavings() {
 		customers.get(currentCustomer).getSaving().doCredit(Menus.userDblInput("How much to withdraw from savings?"));	
 	}
 
-	// display and process checking withdraw
+	/**
+	 * display and process checking withdraw
+	 */
 	private void viewWithdrawalChecking() {
 		customers.get(currentCustomer).getChecking().doCredit(Menus.userDblInput("What is you check amount to withdraw from checking?"));			
 	}
 
-	// display and process savings deposit
+	/**
+	 *  display and process savings deposit
+	 */
 	private void viewDepositSavings() {
 		customers.get(currentCustomer).getSaving().doDebit(Menus.userDblInput("How much to deposit into savings?"));	
 	}
-	// display and process checking deposit	
+	/**
+	 *  display and process checking deposit	
+	 */
 	private void viewDepositChecking() {
 		customers.get(currentCustomer).getChecking().doDebit(Menus.userDblInput("How much to deposit into checking?"));	
 	}
 	
-	// display balances
+	/**
+	 *  display balances
+	 */
 	private void viewBalances() {
 		Menus.viewBalances(customers.get(currentCustomer));
 		processCustomerMenu(Menus.viewCustomerMenu(customers.get(currentCustomer), name));	

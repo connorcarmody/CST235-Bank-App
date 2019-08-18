@@ -18,11 +18,17 @@ public class Saving extends Account{
 		this.intRate = .01;
 	}
 	
+	/**
+	 * withdraw from savings
+	 */
 	public void doCredit(double amt) {
 		this.setAccountBalance(this.getAccountBalance() - amt);
 		addTransaction(amt, "Savings Withdrawal");
 	}
 	
+	/**
+	 * add to savings
+	 */
 	public void doDebit(double amt) {
 		this.setAccountBalance(this.getAccountBalance() + amt);
 		addTransaction(amt, "Savings Deposit");
@@ -39,12 +45,16 @@ public class Saving extends Account{
 	public void setMinBalance(double minBalance) {
 		this.minBalance = minBalance;
 	}
-
+/**
+ * add savings transaction to array
+ */
 	@Override
 	public void addTransaction(double amount, String description) {
 		trans.add(new Transaction(this.getAccountNumber(), amount, description));
 	}
-
+/**
+ * display savings transactions
+ */
 	@Override
 	public void ListTransaction() {
 		Menus.printOut("########################");
@@ -54,7 +64,9 @@ public class Saving extends Account{
 			System.out.println(t.toString());
 		Menus.printOut("########################\n\n");
 	}
-
+/**
+ * apply interest to savings account
+ */
 	@Override
 	public void doEndOfMonth() {
 		if (this.getAccountBalance() < this.minBalance) {

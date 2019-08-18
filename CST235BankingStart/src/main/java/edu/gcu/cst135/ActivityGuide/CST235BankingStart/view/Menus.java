@@ -9,13 +9,19 @@ import edu.gcu.cst135.ActivityGuide.CST235BankingStart.controller.Bank;
 import edu.gcu.cst135.ActivityGuide.CST235BankingStart.model.Account;
 import edu.gcu.cst135.ActivityGuide.CST235BankingStart.model.Customer;
 
-// These are all the menus for the application
+/**
+ * These are all the menus for the application
+ * @author connorcarmody
+ *
+ */
 public class Menus {
 	
 	// Create a scanner for reuse across all methods
 	public static Scanner sc = new Scanner(System.in);
 	
-	// Opening menu for the application
+	/**
+	 * Opening menu for the application
+	 */ 
 	public static int custMenu() {
 		int option = 0;
 		try {
@@ -38,8 +44,14 @@ public class Menus {
 	}
 	
 	
-	// CST235 TASK: REMOVE THE LIST PARAMETER
-	// Picking a customer for banking transaction menu
+	
+	/**
+	 *  Picking a customer for banking transaction menu
+	 *  Takes info from Login method and loads that customer into the old array functionality.
+	 *  The array is still used in case multiple customers login during one use of the app.
+	 * @param custs
+	 * @return
+	 */
 	public static int pickCustomerMenu(List<Customer> custs) {
 		int number;
 		int cust = 0;
@@ -71,13 +83,21 @@ public class Menus {
 		return cust;
 	}
 	
-	// Get user STRING input
+	/**
+	 *  Get user STRING input
+	 * @param message
+	 * @return
+	 */
 	public static String userStrInput(String message) {
 		System.out.println(message);
 		return sc.nextLine();
 	}
 	
-	// Get user DOUBLE input	
+	/**
+	 *  Get user DOUBLE input	
+	 * @param message
+	 * @return
+	 */
 	public static double userDblInput(String message) {	
 		double amount = 0.0;
 		try {
@@ -91,7 +111,12 @@ public class Menus {
 		return amount;
 	}
 	
-	// Banking transaction menu
+	/**
+	 *  Banking transaction menu
+	 * @param c
+	 * @param name
+	 * @return
+	 */
 	public static int viewCustomerMenu(Customer c, String name) {
 
 		try {
@@ -123,7 +148,10 @@ public class Menus {
 		return 0;
 	}
 	
-	// Balance displays for each account class type
+	/**
+	 * Balance displays for each account class type
+	 * @param cust
+	 */
 	public static void viewBalances(Customer cust) {
 		System.out.println("------------------------");
 		System.out.println("CUSTOMER BALANCES");
@@ -134,12 +162,19 @@ public class Menus {
 		System.out.println("------------------------");
 	}
 
-	// Formatted syso method
+	/**
+	 *  Formatted syso method
+	 * @param message
+	 */
 	public static void printOut(String message) {
 		System.out.println(" > " + message);
 	}
 
-	// Formatted balance printing method
+	/**
+	 *  Formatted balance printing method
+	 * @param <T>
+	 * @param obj
+	 */
 	public static <T> void printBalance(T obj){
 		System.out.println(((Account) obj).getAccountNumber() + " : $" + ((Account) obj).getAccountBalance());
 	}

@@ -16,6 +16,12 @@ public class SQLQueries {
 Bank bank = new Bank();
 Scanner scan = new Scanner(System.in);
 Database connect = new Database();
+
+/**
+ * log customer in to app. if username and password match an existing one, it goes through. 
+ * customer is then added to the customer array for instanced used.
+ * @throws SQLException
+ */
 	public void login() throws SQLException {
 		Bank b = new Bank();
 		System.out.println("Enter your username.");
@@ -60,7 +66,9 @@ Database connect = new Database();
      
     }
 	
-	
+	/**
+	 * get account details and put customer on database.
+	 */
 	public void addCustomer() {
 		System.out.println("Enter your first name.");
 		String fn = scan.nextLine();

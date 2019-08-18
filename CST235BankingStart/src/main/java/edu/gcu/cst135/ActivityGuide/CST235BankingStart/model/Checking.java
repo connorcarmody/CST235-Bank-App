@@ -15,7 +15,9 @@ public class Checking extends Account {
 		super(account, amount);
 		this.overDraft = 25.00;
 	}
-	
+	/**
+	 * remove money from checking account apply overdraft if necessary
+	 */
 	public void doCredit(double amt) {
 		if (this.getAccountBalance() < amt) {
 			Menus.printOut("Insufficient funds! Overdraft fee of $" + overDraft + " applied");
@@ -26,7 +28,9 @@ public class Checking extends Account {
 		addTransaction(amt, "Checking Withdrawal");
 
 	}
-	
+	/**
+	 * add money to checking account
+	 */
 	public void doDebit(double amt) {
 		this.setAccountBalance(this.getAccountBalance() + amt);
 		addTransaction(amt, "Checking Deposit");
@@ -45,11 +49,16 @@ public class Checking extends Account {
 		return super.getAccountNumber() + "  " + super.getAccountBalance();
 	}
 
+	/**
+	 * add checking transaction to array
+	 */
 	@Override
 	public void addTransaction(double amount, String description) {
 		trans.add(new Transaction(this.getAccountNumber(), amount, description));
 	}
-
+/**
+ * list checking transaction
+ */
 	@Override
 	public void ListTransaction() {
 		Menus.printOut("########################");

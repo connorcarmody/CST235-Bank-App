@@ -5,14 +5,19 @@ import edu.gcu.cst135.ActivityGuide.CST235BankingStart.model.Database;
 
 public class App 
 {
-	// Starting point for banking application
+	/**
+	 *  Starting point for banking application
+	 * @param args
+	 */
     public static void main( String[] args )
     {
     	Database db = new Database();
     	// Create an object and set the name
         Bank bank = new Bank("Grand Canyon Credit Union");
         
-        // Start the banking application
+        /**
+         *  Start the banking application
+         */
       //  db.databaseUtil();
         bank.start();
     }

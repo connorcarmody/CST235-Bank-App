@@ -62,7 +62,11 @@ public class Customer {
 		saving = new Saving(generateAcct('S'), 2000);
 		loan = new Loan(generateAcct('L'), 2000);
 	}
-	
+	/**
+	 * create random account number
+	 * @param type
+	 * @return
+	 */
 	private String generateAcct(char type) {
 		String acct = "0";
 		for (int x = 0; x < 9; x++) {

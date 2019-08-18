@@ -11,12 +11,15 @@ public class Database {
 	    static String DB_PASS = "password123";
 
 	    static Connection connection;
-
+/**
+ * This connects us to the database.
+ */
 	public void databaseUtil(){
 		System.out.println("Connecting . . .");
 	    try {
 	        connection=DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
 	        System.out.println("You are connected.");
+	  
 	    }catch(SQLException e) {
 	        e.printStackTrace();
 	        System.err.println("Not connected");
@@ -24,6 +27,10 @@ public class Database {
 	        
 	    
 	}
+	/**
+	 * Closes database connection. (VERY IMPORANT TO USE EVERY TIME YOU OPEN IT)
+	 * @throws SQLException
+	 */
 	public void databaseClose() throws SQLException {
 		connection.close();
 	}

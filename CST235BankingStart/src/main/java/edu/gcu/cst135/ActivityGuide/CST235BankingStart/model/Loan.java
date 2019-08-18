@@ -18,13 +18,17 @@ public class Loan extends Account {
 		this.lateFee =25.00;
 		this.intRate = .02;
 	}
-
+/**
+ * pay your loan
+ */
 	public void doCredit(double amt) {
 		this.setAccountBalance(this.getAccountBalance() - amt);
 		isPaid = true;
 		addTransaction(amt, "Loan Payment");
 	}
-	
+	/**
+	 * take out a loan
+	 */
 	public void doDebit(double amt) {
 		this.setAccountBalance(this.getAccountBalance() + amt);
 		addTransaction(amt, "Loan Withdrawal");
@@ -33,12 +37,16 @@ public class Loan extends Account {
 	public String toString() {
 		return super.getAccountNumber() + "  " + super.getAccountBalance();
 	}
-
+/**
+ * add loan transaction to array
+ */
 	@Override
 	public void addTransaction(double amount, String description) {
 		trans.add(new Transaction(this.getAccountNumber(), amount, description));
 	}
-
+/**
+ * display loan transactions
+ */
 	@Override
 	public void ListTransaction() {
 		Menus.printOut("########################");
@@ -48,7 +56,9 @@ public class Loan extends Account {
 			System.out.println(t.toString());
 		Menus.printOut("########################\n\n");
 	}
-
+/**
+ * charge interest. late fee if necessary
+ */
 	@Override
 	public void doEndOfMonth() {
 		double interest = this.getAccountBalance() * intRate;
